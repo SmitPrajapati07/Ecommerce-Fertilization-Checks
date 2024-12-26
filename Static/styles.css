@@ -1,0 +1,175 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+header {
+    background: linear-gradient(45deg, #3498db, #9b59b6);
+    color: #fff;
+    padding: 60px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+p.lead {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Section Buttons */
+.btn {
+    font-size: 1.2rem;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    text-transform: uppercase;
+    margin-left: 200px;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn-outline-warning {
+    border-color: #f39c12;
+    color: #f39c12;
+    font-weight: 700;
+}
+
+.btn-outline-warning:hover {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.btn-outline-success {
+    border-color: #2ecc71;
+    color: #2ecc71;
+    font-weight: 700;
+}
+
+.btn-outline-success:hover {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.btn-outline-info {
+    border-color: #1abc9c;
+    color: #1abc9c;
+    font-weight: 700;
+}
+
+.btn-outline-info:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #95a5a6;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Base Style for Stylish Heading */
+.stylish-heading {
+    font-family: 'Pacifico', cursive; /* Funky font-family for playful style */
+    font-size: 3rem; /* Make it large */
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #f0e8e7; /* Dark, elegant color */
+    text-transform: capitalize; /* Capitalize the first letter of each word */
+    letter-spacing: 1px; /* Slightly spaced letters for sophistication */
+    text-align: center;
+    padding: 20px 40px;
+    background: #f39c12;
+    border: 2px solid #ddd; /* Light grey border for subtle styling */
+    border-radius: 8px; /* Rounded corners for elegance */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-left: 20px;
+    transition: all 0.3s ease-in-out;
+    margin-right: 20px;
+}
+
+/* Hover Effect */
+.stylish-heading:hover {
+    color: #0f0705; /* Elegant dark blue color */
+    border-color: #a12b10; /* Change border to match hover color */
+    box-shadow: 0 6px 18px rgba(191, 44, 44, 0.15); /* Slightly larger shadow on hover */
+    transform: translateY(-3px); /* Lift the element up for a subtle 3D effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stylish-heading {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+        padding: 10px 20px; /* Less padding on small screens */
+    }
+}
+
+
+.branch-btn{
+    padding-left: 500px;
+    padding-right: 500px;
+    margin-right: 200px;
+}
+.subject-btn{
+    padding-left: 300px;
+    padding-right: 300px;
+    text-align: center;
+    margin-right: 200px;
+}
+.unit-btn{
+    padding-left: 500px;
+    padding-right: 500px;
+}
+
