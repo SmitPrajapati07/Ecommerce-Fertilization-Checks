@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration - FarmFertility</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            /* background: linear-gradient(45deg, #9c27b0, #673ab7);
+             */
+            /* background: white; */
+            background-image: url("./static/crop-fert.webp");
+            background-repeat: no-repeat;
+            background-size: 1600px 820px;
+
+            color: white;
+            height: 110vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 14px;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 18px;
+            max-width: 490px;
+            text-align: center;
+        }
+
+        .hero .btn-primary {
+            background-color: #ff9800;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .hero .btn-primary:hover {
+            background-color: #ff5722;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
+        }
+
+        /* Register Section */
+        .register-section {
+            padding: 50px 0;
+            background-color: #f0f4f8;
+        }
+
+        .register-card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+            margin: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .register-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .register-card h2 {
+            color: #673ab7;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-card .form-group {
+            margin-bottom: 12px;
+        }
+
+        .register-card .form-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .register-card .form-control {
+            padding: 5px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .register-card .form-control:focus {
+            border-color: #673ab7;
+            box-shadow: 0 0 5px rgba(103, 58, 183, 0.4);
+        }
+
+        .register-card .form-check-input {
+            margin-left: -1rem;
+        }
+
+        .register-card .btn-primary {
+            background-color: #673ab7;
+            color: white;
+            padding: 9px;
+            border-radius: 30px;
+            font-size: 14px;
+            width: 100%;
+            border: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .register-card .btn-primary:hover {
+            background-color: #5e35b1;
+            box-shadow: 0 6px 20px rgba(103, 58, 183, 0.2);
+        }
+
+        .register-card .form-check-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .register-card .form-check-label a {
+            color: #673ab7;
+        }
+
+        .register-card .form-check-label a:hover {
+            text-decoration: underline;
+        }
+
+        /* Subtle Button Hover Animation */
+        .btn-primary {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                background-color: #673ab7;
+            }
+
+            50% {
+                transform: scale(1.05);
+                background-color: #512da8;
+            }
+
+            100% {
+                transform: scale(1);
+                background-color: #673ab7;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .register-card {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .register-card h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        
+        /* Navbar */
+        .navbar {
+            background-color: #1e1e2f;
+            padding: 20px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ddd;
+            margin-right: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f1c40f;
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1e1e2f, #34495e);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1e1e2f;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">FarmFertility</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/farmer_login">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+     <!-- Hero Section -->
+     <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Register as a Farmer</h1>
+            <p>Join us to get professional fertilization assistance for your crops.</p>
+            <a href="/" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" >
+
+        <div class="container">
+            <div class="register-card">
+                <h2>Register</h2>
+
+                {% if message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+
+                <form method="POST" action="/farmer_register">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="phone" 
+                            name="phone" 
+                            required 
+                            placeholder="Enter your phone number eg. +91XXXXXXXXXX" 
+                            pattern="^\+91[0-9]{10}$" 
+                            title="Phone number must start with +91 and contain exactly 10 digits."
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="land_area" class="form-label">Land Area (in acres)</label>
+                        <input type="text" class="form-control" id="land_area" name="land_area" required placeholder="Enter your land area">
+                    </div>
+                    <div class="form-group">
+                        <label for="crop_type" class="form-label">Type of Crop</label>
+                        <input type="text" class="form-control" id="crop_type" name="crop_type" required placeholder="Enter the type of crop">
+                    </div>
+                    <div class="form-group">
+                        <label for="soil_type" class="form-label">Soil Type</label>
+                        <select class="form-control" id="soil_type" name="soil_type" required>
+                            <option value="" disabled selected>Select soil type</option>
+                            <option value="sandy">Sandy</option>
+                            <option value="clay">Clay</option>
+                            <option value="loamy">Loamy</option>
+                            <option value="silty">Silty</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required placeholder="Choose a password">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#">terms and conditions</a>.
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Fertilization Assistance Platform. All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Request Dashboard</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #F4F4F9;
+            color: #2C3E50;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #34495E; /* Deep Navy Blue */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #F4D03F; /* Gold */
+            /* text-transform: uppercase; */
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            margin-left: 30px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #2C3E50; /* Deep Navy Blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container Styling */
+        .container {
+            width: 90%;
+            max-width: 1600px;
+            margin: 60px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 80px; /* Space to prevent overlap with footer */
+        }
+
+        .container:hover {
+            box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            background-color: #1ABC9C; /* Premium Teal */
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #ecf0f1;
+            color: #34495E;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover td {
+            background-color: #e1f5f1;
+        }
+
+        /* Form Styling */
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .form-container div {
+            flex: 1 1 30%;
+            min-width: 280px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2C3E50;
+            display: block;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            border: 2px solid #BDC3C7;
+            border-radius: 10px;
+            background-color: #FAFAFA;
+            color: #2C3E50;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            border-color: #1ABC9C; /* Premium Teal */
+            outline: none;
+            box-shadow: 0 0 10px rgba(26, 188, 156, 0.4);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #1ABC9C; /* Gold */
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #197764; /* Premium Gold Hover */
+        }
+
+        /* Message Styling */
+        p {
+            color: #1ABC9C; /* Premium Teal */
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container > div {
+                flex: 1 1 100%;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-brand">FarmFertility</div>
+        <!-- <a class="navbar-brand" href="/farmer_home">FarmFertility</a> -->
+        <div class="nav-links">
+            <a href="/university_home">Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Farmers Requests</h1>
+
+        <!-- Displaying the message after a status update -->
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        <!-- Table to show the farmer requests -->
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Name</th>
+                    <th>Crop</th>
+                    <th>Soil Type</th>
+                    <th>Email</th>
+                    <th>Request</th>
+                    <th>Status</th>
+                    <th>University Comment</th>
+                    <th>Assigned Person</th>
+                    <th>Record_ts</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <!-- <td>{{ request[0] }}</td> -->
+                    <td>{{ request[1] }}</td>
+                    <td>{{ request[2] }}</td>
+                    <td>{{ request[3] }}</td>
+                    <td>{{ request[4] }}</td>
+                    <td>{{ request[6] }}</td>
+                    <td>{{ request[7] }}</td>
+                    <td>{{ request[8] }}</td>
+                    <td>{{ request[9] }}</td>
+                    <td>{{ request[10] }}</td>
+
+                    <td>
+                        <form method="POST" action="/view_request" class="form-container">
+                            <div>
+                                <!-- Status Dropdown -->
+                                <label for="status">Status</label>
+                                <select name="status">
+                                    <option value="Pending" {% if request[6] == 'Pending' %} selected {% endif %}>Pending</option>
+                                    <option value="Processed" {% if request[6] == 'Processed' %} selected {% endif %}>Processed</option>
+                                    <option value="Completed" {% if request[6] == 'Completed' %} selected {% endif %}>Completed</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <!-- Admin Comment Box -->
+                                <label for="university_comment">University Comment</label>
+                                <textarea name="university_comment" rows="2">{{ request[8] if request[8] else '' }}</textarea>
+                            </div>
+
+                            <div>
+                                <!-- Assign Person Dropdown -->
+                                <label for="assigned_person">Assign Person</label>
+                                <select name="assigned_person">
+                                    <option value="">Select a person</option>
+                                    {% set assigned_persons = [
+                                        {'id': 1, 'name': 'John Doe'},
+                                        {'id': 2, 'name': 'Jane Smith'},
+                                        {'id': 3, 'name': 'Emily Johnson'},
+                                        {'id': 4, 'name': 'Michael Brown'},
+                                        {'id': 5, 'name': 'Sara White'}
+                                    ] %}
+                                    {% for person in assigned_persons %}
+                                        <option value="{{ person.name }}" {% if person.name == request[8] %} selected {% endif %}>
+                                            {{ person.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <input type="hidden" name="request_id" value="{{ request[0] }}">
+
+                            <button type="submit">Update Request</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Farm Fertilization Assistance. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

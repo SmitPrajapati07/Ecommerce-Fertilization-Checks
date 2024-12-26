@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- <header class="bg-primary text-white text-center py-5">
+        <h1 class="display-4">Watch Video</h1>
+    </header> -->
+    <header class="bg-primary text-white text-left py-5">
+        <h1 class="display-4 font-weight-bold">Educational Video Library</h1>
+        <p class="lead">Explore the latest educational content, organized by Branch, Subject, and Unit</p>
+    </header>
+
+    <main class="container py-5">
+
+        <button id="back-btn" class="btn btn-outline-secondary mb-4">Back</button>
+
+
+        <div id="video-container" class="text-center">
+            <iframe id="video-frame" width="100%" height="600px" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white">
+        <p>&copy; 2024 Educational Video Library. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            // Get the video URL from the query string
+            var urlParams = new URLSearchParams(window.location.search);
+            var videoUrl = urlParams.get('video_url');
+
+            // Embed the video in the iframe
+            if (videoUrl) {
+                var videoEmbedUrl = videoUrl.replace("watch?v=", "embed/"); // Convert YouTube URL to embed format
+                $('#video-frame').attr('src', videoEmbedUrl);
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // Back button functionality
+            $('#back-btn').click(function () {
+                // Go back to the previous page
+                window.history.back();
+            });
+        });
+    </script>
+
+</body>
+
+</html>
